@@ -6,6 +6,8 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const port = process.env.PORT
+const dataBaseConnection = require('./config/config')
+dataBaseConnection()
 
 app.use(express.static('/public'))
 app.use(express.json())
