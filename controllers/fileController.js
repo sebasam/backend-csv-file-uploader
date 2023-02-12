@@ -52,6 +52,64 @@ const createFile = async(req = request, res = response) => {
     // }
 }
 
+const getFiles = async(req, res) => {
+    try {
+        const files = await File.find()
+        return res.status(200).json({
+            ok: true,
+            files: files
+        })
+    }catch(error){
+        return res.status(500).json({
+            ok: false,
+            msg: 'Please contact to support'
+        })
+    }
+}
+
+const getFileById = async(req, res) => {
+    try {
+        const { id } = req.params
+        const file = await File.find({ _id: id })
+        if(!file) return res.status(404).json({
+            ok: false,
+            msg: 'There isnt any file with that ID'
+        })
+        return res.status(200).json({
+            ok: true,
+            file: file
+        })
+    } catch (error) {
+        return res.status(500).json({
+            ok: false,
+            msg: 'Please contact to support'
+        })
+    }
+}
+
+const deleteFileById = async(req, res) => {
+    try {
+        const { id } = req.params
+        const file = await File.findOneAndDelete({ _id: id })
+        if(!file) return res.status(404).json({
+            ok: false,
+            msg: 'There isnt any file with that ID'
+        })
+        return res.status(200).json({
+            ok: true,
+            msg: 'File has been deleted!'
+        })
+    } catch (error) {
+        return res.status(500).json({
+            ok: false,
+            msg: 'Please contact to support'
+        })
+    }
+}
+
 module.exports = {
-    createFile
+    createFile,
+    getFiles,
+    getFileById,
+    deleteFileById
 }
