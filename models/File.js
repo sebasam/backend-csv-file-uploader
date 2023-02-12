@@ -1,9 +1,12 @@
 const { Schema, model } = require('mongoose')
 
 const fileSchema = Schema({
+    name: {
+        type: String,
+        required: true
+    },
     data: {
-        type: Map,
-        of: String,
+        type: Object,
         required: true
     }
 })
