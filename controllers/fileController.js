@@ -1,6 +1,4 @@
 const File = require('./../models/File')
-const csv = require('csv-parser')
-const fs = require('fs')
 const csvtojson = require('csvtojson')
 const { request, response } = require('express')
 
@@ -25,31 +23,7 @@ const createFile = async(req = request, res = response) => {
                 msg: 'Please contact to support',
                 error: error
             })
-        })    
-    // try {
-    //     console.log(req.file.path)
-    //     fs.createReadStream(req.file.path)
-    //         .pipe(csv())
-    //         .on('data', async(data) => {
-    //             const file = new File({ 
-    //                 name: req.file.filename,
-    //                 data: data
-    //             })
-    //             await file.save({ w: 1 })
-    //             console.log(file)
-    //         })
-    //         .on('end', () => {
-    //             return res.status(201).json({
-    //                 ok: true,
-    //                 msg: 'file uploaded'
-    //             })
-    //         })
-    // }catch(error){
-    //     res.status(500).json({
-    //         msg: 'Please contact to support',
-    //         error: error
-    //     })
-    // }
+        })
 }
 
 const getFiles = async(req, res) => {
