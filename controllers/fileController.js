@@ -1,9 +1,10 @@
 const File = require('./../models/File')
 const csvtojson = require('csvtojson')
 const { request, response } = require('express')
+const path = require('path')
+const fs = require('fs')
 
 const createFile = async(req = request, res = response) => {
-    console.log(req.file)
     csvtojson()        
         .fromFile(req.file.path)
         .then(csvData => {
@@ -11,7 +12,7 @@ const createFile = async(req = request, res = response) => {
                 name: req.file.originalname,
                 data: csvData
             })
-            file.save({ w: 1 })
+            file.save({ w: 1 })            
             return res.status(201).json({
                 ok: true,
                 msg: 'File uploaded'
@@ -64,11 +65,14 @@ const getFileById = async(req, res) => {
 const deleteFileById = async(req, res) => {
     try {
         const { id } = req.params
-        const file = await File.findOneAndDelete({ _id: id })
+        const file = await File.findOne({ _id: id })        
+                
         if(!file) return res.status(404).json({
             ok: false,
             msg: 'There isnt any file with that ID'
         })
+        fs.unlinkSync(path.join(__dirname, '..', `public/files/${ file.name }`))
+        await file.delete()
         return res.status(200).json({
             ok: true,
             msg: 'File has been deleted!'
