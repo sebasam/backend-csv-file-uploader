@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "65ecc7af-4fbf-43de-99c9-b56d96a6918e",
+		"name": "files",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23459131"
+	},
+	"item": [
+		{
+			"name": "POST file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/sebas/Downloads/oscar_age_female.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4003/api/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"api",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get files",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4003/api/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"api",
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get file by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4003/api/files/63e91403f8dde3d2ceebd617",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"api",
+						"files",
+						"63e91403f8dde3d2ceebd617"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete file by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4003/api/delete/63e91363097482fe81470166",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"api",
+						"delete",
+						"63e91363097482fe81470166"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sebas@gmail.com\",\r\n    \"password\": \"#Clave1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4003/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sebas@gmail.com\",\r\n    \"password\": \"#Clave1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4003/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4003",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
